@@ -2,8 +2,10 @@ package com.homework.mhafidhaziz.aloapp.presentation.homepage
 
 import android.databinding.DataBindingUtil
 import android.os.Bundle
+import android.support.design.widget.Snackbar
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,6 +17,9 @@ import com.homework.mhafidhaziz.aloapp.R
 import com.homework.mhafidhaziz.aloapp.databinding.FragmentHomePageBinding
 import com.homework.mhafidhaziz.aloapp.entity.HomeList
 import com.homework.mhafidhaziz.aloapp.presentation.mainpage.MainPageActivity
+import com.google.firebase.database.DatabaseError
+
+
 
 
 /**
@@ -25,7 +30,7 @@ import com.homework.mhafidhaziz.aloapp.presentation.mainpage.MainPageActivity
  */
 class HomePageFragment : Fragment() {
 
-    lateinit var binding: FragmentHomePageBinding
+    private lateinit var binding: FragmentHomePageBinding
     private lateinit var databaseReference: DatabaseReference
     private lateinit var mAdapter: FirebaseRecyclerAdapter<HomeList, HomeListHolder>
 
@@ -36,13 +41,14 @@ class HomePageFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        (activity as MainPageActivity).setActionBarTitle(getString(R.string.menu_home))
+        (activity as MainPageActivity).setActionBarTitle(getString(R.string.app_name))
 
         databaseReference = FirebaseDatabase.getInstance().reference.child("homelist")
         databaseReference.keepSynced(true)
 
         binding.recyclerView.setHasFixedSize(true)
         binding.recyclerView.layoutManager = LinearLayoutManager(context)
+
         attachRecyclerViewAdapter()
     }
 
@@ -69,17 +75,13 @@ class HomePageFragment : Fragment() {
                 holder.bind(model)
             }
 
-            override fun onDataChanged() {}
+            override fun onDataChanged() {
+                Log.i("", "")
+            }
+
+            override fun onError(e: DatabaseError) {
+                Snackbar.make(view!!, "Terjadi Kesalahan", Snackbar.LENGTH_LONG).show()
+            }
         }
-    }
-
-    override fun onStart() {
-        super.onStart()
-        mAdapter.startListening()
-    }
-
-    override fun onStop() {
-        super.onStop()
-        mAdapter.stopListening()
     }
 }

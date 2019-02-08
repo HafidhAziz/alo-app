@@ -39,6 +39,7 @@
                 android:text="@string/login_info" />
 
             <android.support.design.widget.TextInputLayout
+                style="@style/CustomInputLayout.Dark"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:error="@{vm.bTextUsernameError}"
@@ -50,7 +51,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/prompt_username"
-                    android:inputType="text"
+                    android:inputType="textEmailAddress"
                     android:maxLines="1"
                     android:singleLine="true"
                     android:text="@={vm.bTextUsername}"/>
@@ -59,6 +60,7 @@
 
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/il_password"
+                style="@style/CustomInputLayout.Dark"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:error="@{vm.bTextPasswordError}"

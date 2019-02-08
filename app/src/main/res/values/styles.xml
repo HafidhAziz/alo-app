@@ -1,56 +1,70 @@
 <resources>
 
-<!-- Base application theme. -->
+    <!-- Base application theme. -->
 
-<style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-    <!-- Customize your theme here. -->
-    <item name="colorPrimary">@color/colorPrimary</item>
-    <item name="colorPrimaryDark">@color/whiteApp</item>
-    <item name="colorAccent">@color/whiteApp</item>
-    <item name="actionMenuTextAppearance">@style/MenuTextAppearance.Alo</item>
-    <item name="android:actionMenuTextAppearance">@style/MenuTextAppearance.Alo</item>
-    <item name="windowActionBar">false</item>
-    <item name="windowNoTitle">true</item>
-    <item name="android:textColor">@color/textPrimary</item>
-    <item name="android:textColorPrimary">@color/textPrimary</item>
-    <item name="android:textColorSecondary">@color/textSecondaryGrey</item>
-    <item name="android:textColorPrimaryInverse">@color/textSecondaryGrey</item>
-</style>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/whiteApp</item>
+        <item name="colorAccent">@color/whiteApp</item>
+        <item name="actionMenuTextAppearance">@style/MenuTextAppearance.Alo</item>
+        <item name="android:actionMenuTextAppearance">@style/MenuTextAppearance.Alo</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:textColor">@color/textPrimary</item>
+        <item name="android:textColorPrimary">@color/textPrimary</item>
+        <item name="android:textColorSecondary">@color/textSecondaryGrey</item>
+        <item name="android:textColorPrimaryInverse">@color/textSecondaryGrey</item>
+    </style>
 
-<style name="ActionBarStyle.Alo" parent="ThemeOverlay.AppCompat.ActionBar">
-    <item name="android:layout_width">match_parent</item>
-    <item name="android:layout_height">?actionBarSize</item>
-    <item name="android:background">@color/colorPrimary</item>
-    <item name="android:textColor">@color/whiteApp</item>
-</style>
+    <style name="ActionBarStyle.Alo" parent="ThemeOverlay.AppCompat.ActionBar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">?actionBarSize</item>
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:textColor">@color/whiteApp</item>
+    </style>
 
-<style name="MenuTextAppearance.Alo" parent="android:TextAppearance.Holo.Widget.ActionBar.Menu">
-    <item name="android:textAllCaps">false</item>
-    <item name="android:textStyle">normal</item>
-    <item name="android:textSize">16sp</item>
-</style>
+    <style name="MenuTextAppearance.Alo" parent="android:TextAppearance.Holo.Widget.ActionBar.Menu">
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">16sp</item>
+    </style>
 
     <style name="LineWithElevationReverse">
-    <item name="android:background">@drawable/drawable_shadow_elevation_reverse</item>
-    <item name="android:layout_width">match_parent</item>
-    <item name="android:layout_height">2dp</item>
-    <item name="android:dither">true</item>
-</style>
+        <item name="android:background">@drawable/drawable_shadow_elevation_reverse</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">2dp</item>
+        <item name="android:dither">true</item>
+    </style>
 
-<style name="RegularFont">
-    <item name="android:fontFamily">@font/roboto_regular</item>
-    <item name="android:textColor">@color/textPrimary</item>
-    <item name="android:lineSpacingMultiplier">1.1</item>
-</style>
+    <style name="RegularFont">
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:textColor">@color/textPrimary</item>
+        <item name="android:lineSpacingMultiplier">1.1</item>
+    </style>
 
-<style name="BebasNeuBoldFont">
-    <item name="android:fontFamily">@font/bebas_neu_bold</item>
-    <item name="android:lineSpacingMultiplier">0.93</item>
-</style>
+    <style name="BebasNeuBoldFont">
+        <item name="android:fontFamily">@font/bebas_neu_bold</item>
+        <item name="android:lineSpacingMultiplier">0.93</item>
+    </style>
 
-<style name="Widget.BottomNavigationView" parent="Widget.Design.BottomNavigationView">
-    <item name="android:fontFamily">@font/roboto_light</item>
-    <item name="android:textSize">@dimen/dp10</item>
-</style>
+    <style name="Widget.BottomNavigationView" parent="Widget.Design.BottomNavigationView">
+        <item name="android:fontFamily">@font/roboto_light</item>
+        <item name="android:textSize">@dimen/dp10</item>
+    </style>
+
+    <style name="CustomInputLayout" parent="Widget.Design.TextInputLayout">
+        <item name="hintTextAppearance">@style/TextFloatLabelAppearance</item>
+        <item name="counterTextAppearance">@style/TextAppearance.Design.Counter</item>
+        <item name="counterOverflowTextAppearance">@style/TextAppearance.Design.Counter.Overflow</item>
+    </style>
+
+    <style name="CustomInputLayout.Dark">
+        <item name="colorAccent">@color/colorPrimary</item>
+    </style>
+
+    <style name="TextFloatLabelAppearance" parent="TextAppearance.Design.Hint">
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
 
 </resources>

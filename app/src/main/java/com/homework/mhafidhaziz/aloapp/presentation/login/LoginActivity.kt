@@ -6,6 +6,7 @@ import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.text.TextUtils
+import android.util.Patterns
 import android.view.View
 import com.homework.mhafidhaziz.aloapp.R
 import com.homework.mhafidhaziz.aloapp.databinding.ActivityLoginBinding
@@ -54,6 +55,9 @@ class LoginActivity : AppCompatActivity(),
         if (TextUtils.isEmpty(viewModel.bTextUsername.get())) {
             isValid = false
             viewModel.bTextUsernameError.set(getString(R.string.error_empty_email))
+        }else if(!Patterns.EMAIL_ADDRESS.matcher(viewModel.bTextUsername.get()).matches()){
+            isValid = false
+            viewModel.bTextUsernameError.set(getString(R.string.error_format_email))
         }
 
         viewModel.bTextPasswordError.set(null)
