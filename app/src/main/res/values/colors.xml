@@ -3,22 +3,13 @@
     <color name="whiteApp">#FFFFFF</color>
     <color name="blackApp">#000000</color>
 
-    <color name="splashBackground">#21272F</color>
-    <color name="appBarBackground">#111317</color>
-
     <color name="buttonGray">#3E4656</color>
 
     <color name="pageBackground">#F9F9F9</color>
-    <color name="lineBackgroundPrimary">#3E4656</color>
-    <color name="lineBackgroundSecondary">#A4ABBB</color>
 
     <color name="textPrimary">#333333</color>
     <color name="textSecondaryGrey">#6D6D6D</color>
 
     <color name="colorPrimary">#3570D2</color>
-    <color name="colorGrey">#DEDEDE</color>
-    <color name="colorSoftGreyLine">#ECECEC</color>
-
-    <color name="colorItemNegative">#FFF9F9F9</color>
 
 </resources>

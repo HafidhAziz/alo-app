@@ -30,13 +30,7 @@
     <item name="android:textSize">16sp</item>
 </style>
 
-<style name="Line">
-    <item name="android:background">@color/colorSoftGreyLine</item>
-    <item name="android:layout_width">match_parent</item>
-    <item name="android:layout_height">@dimen/line_height</item>
-</style>
-
-<style name="LineWithElevationReverse">
+    <style name="LineWithElevationReverse">
     <item name="android:background">@drawable/drawable_shadow_elevation_reverse</item>
     <item name="android:layout_width">match_parent</item>
     <item name="android:layout_height">2dp</item>

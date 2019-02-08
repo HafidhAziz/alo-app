@@ -1,5 +1,7 @@
 package com.homework.mhafidhaziz.aloapp.presentation.profile
 
+import android.view.View
+
 
 /**
  * Created by mhafidhabdulaziz on 08/02/19.
@@ -8,4 +10,5 @@ package com.homework.mhafidhaziz.aloapp.presentation.profile
  * Copyright 2019
  */
 interface ProfileView {
+    fun onClickLogout(view: View)
 }

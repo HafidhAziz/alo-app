@@ -36,7 +36,7 @@
                 android:textStyle="bold"
                 android:layout_marginTop="50dp"
                 android:layout_marginBottom="@dimen/dp22"
-                android:text="LOGIN" />
+                android:text="@string/login_info" />
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -82,7 +82,7 @@
             </android.support.design.widget.TextInputLayout>
 
             <Button
-                android:id="@+id/email_sign_in_button"
+                android:id="@+id/sign_in_button"
                 android:background="@color/colorPrimary"
                 android:textColor="@color/whiteApp"
                 android:layout_width="match_parent"

@@ -8,7 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import com.homework.mhafidhaziz.aloapp.R
 import com.homework.mhafidhaziz.aloapp.databinding.FragmentProfileBinding
+import com.homework.mhafidhaziz.aloapp.presentation.login.LoginActivity
 import com.homework.mhafidhaziz.aloapp.presentation.mainpage.MainPageActivity
+import com.homework.mhafidhaziz.aloapp.utils.PreferenceManager
 
 
 /**
@@ -20,7 +22,7 @@ import com.homework.mhafidhaziz.aloapp.presentation.mainpage.MainPageActivity
 class ProfileFragment : Fragment(),
     ProfileView {
 
-    lateinit var binding: FragmentProfileBinding
+    private lateinit var binding: FragmentProfileBinding
     private lateinit var viewModel: ProfileViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -34,5 +36,24 @@ class ProfileFragment : Fragment(),
         binding.view = this
         binding.vm = ProfileViewModel()
         viewModel = binding.vm
+
+        setProfileData()
+    }
+
+    private fun setProfileData() {
+        PreferenceManager.userData.let {
+            viewModel.bTextMail.set(it)
+        }
+        //hardcoded gender and phone
+        viewModel.bTextGender.set("Laki-laki")
+        viewModel.bTextPhone.set("089111222333")
+
+    }
+
+    override fun onClickLogout(view: View) {
+        PreferenceManager.isUserLogin = false
+        PreferenceManager.userData = ""
+        LoginActivity.startThisActivity(context!!)
+        (activity as MainPageActivity).finish()
     }
 }

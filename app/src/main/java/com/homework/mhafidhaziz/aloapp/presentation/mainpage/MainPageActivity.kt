@@ -14,11 +14,9 @@ import com.homework.mhafidhaziz.aloapp.presentation.homepage.HomePageFragment
 import com.homework.mhafidhaziz.aloapp.presentation.profile.ProfileFragment
 
 class MainPageActivity : AppCompatActivity(),
-    MainPageView,
     BottomNavigationView.OnNavigationItemSelectedListener {
 
     lateinit var binding: ActivityMainPageBinding
-    private lateinit var viewModel: MainPageViewModel
     private var firstTime = true
 
     companion object {
@@ -32,9 +30,6 @@ class MainPageActivity : AppCompatActivity(),
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main_page)
-        binding.view = this
-        binding.vm = MainPageViewModel()
-        viewModel = binding.vm
         binding.bottomTab.setOnNavigationItemSelectedListener(this)
         binding.bottomTab.selectedItemId = R.id.action_home
 
