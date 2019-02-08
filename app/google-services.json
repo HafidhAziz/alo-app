@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1566286749",
+    "firebase_url": "https://alo-app-8283c.firebaseio.com",
+    "project_id": "alo-app-8283c",
+    "storage_bucket": "alo-app-8283c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1566286749:android:2ac10cac3631798d",
+        "android_client_info": {
+          "package_name": "com.homework.mhafidhaziz.aloapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1566286749-va3j57ndfpscik787vdot4cs3dd72d1i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.homework.mhafidhaziz.aloapp",
+            "certificate_hash": "34c185cf85194ed244ee40b22f19af8de43a25db"
+          }
+        },
+        {
+          "client_id": "1566286749-760cp25pg342bvi7t734nc3ghbu6hlan.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZtXpxgPx4zC6D6uqWldBPcnFej6ThBew"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1566286749-760cp25pg342bvi7t734nc3ghbu6hlan.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

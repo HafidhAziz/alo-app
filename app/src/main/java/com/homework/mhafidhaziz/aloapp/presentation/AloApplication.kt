@@ -1,6 +1,7 @@
 package com.homework.mhafidhaziz.aloapp.presentation
 
 import android.app.Application
+import com.google.firebase.database.FirebaseDatabase
 import com.homework.mhafidhaziz.aloapp.utils.PreferenceManager
 
 
@@ -15,6 +16,6 @@ class AloApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         PreferenceManager.init(this)
-//        FirebaseDatabase.getInstance().setPersistenceEnabled(true)
+        FirebaseDatabase.getInstance().setPersistenceEnabled(true)
     }
 }
