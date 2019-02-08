@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="view"
+            type="com.homework.mhafidhaziz.aloapp.presentation.login.LoginView"/>
+
+        <variable
+            name="vm"
+            type="com.homework.mhafidhaziz.aloapp.presentation.login.LoginViewModel"/>
+    </data>
+
+    <ScrollView
+        android:id="@+id/login_form"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/pageBackground">
+
+        <LinearLayout
+            android:id="@+id/email_login_form"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/dp12">
+
+            <TextView
+                style="@style/RegularFont"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/sp22"
+                android:textStyle="bold"
+                android:layout_marginTop="50dp"
+                android:layout_marginBottom="@dimen/dp22"
+                android:text="LOGIN" />
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:error="@{vm.bTextUsernameError}"
+                app:errorEnabled="@{vm.bTextUsernameError == null ? false : true}">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/txtUsername"
+                    style="@style/RegularFont"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/prompt_username"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:text="@={vm.bTextUsername}"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/il_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:error="@{vm.bTextPasswordError}"
+                app:errorEnabled="@{vm.bTextPasswordError == null ? false : true}"
+                app:passwordToggleEnabled="true">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/password"
+                    style="@style/RegularFont"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/prompt_password"
+                    android:imeActionId="6"
+                    android:imeActionLabel="@string/action_sign_in"
+                    android:imeOptions="actionUnspecified"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:text="@={vm.bTextPassword}"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+            <Button
+                android:id="@+id/email_sign_in_button"
+                android:background="@color/colorPrimary"
+                android:textColor="@color/whiteApp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp16"
+                android:onClick="@{v ->view.onClickLogin(v)}"
+                android:text="@string/action_sign_in"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+    </ScrollView>
+</layout>
