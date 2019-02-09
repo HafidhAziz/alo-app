@@ -16,6 +16,7 @@ import com.homework.mhafidhaziz.aloapp.event.HomeEvent
 import com.homework.mhafidhaziz.aloapp.presentation.detail.DetailActivity
 import com.homework.mhafidhaziz.aloapp.presentation.homepage.adapter.HomeListItemAdapter
 import com.homework.mhafidhaziz.aloapp.presentation.mainpage.MainPageActivity
+import kotlinx.android.synthetic.main.fragment_home_page.*
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 
@@ -31,6 +32,8 @@ class HomePageFragment : Fragment(),
 
     override lateinit var listAdapter: HomeListItemAdapter
     private lateinit var binding: FragmentHomePageBinding
+
+    private lateinit var viewModel: HomePageViewModel
     private lateinit var databaseReference: DatabaseReference
     private var homeList: ArrayList<HomeList> = ArrayList()
 
@@ -42,6 +45,9 @@ class HomePageFragment : Fragment(),
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         (activity as MainPageActivity).setActionBarTitle(getString(R.string.app_name))
+        binding.view = this
+        binding.vm = HomePageViewModel()
+        viewModel = binding.vm
 
         EventBus.getDefault().register(this)
 
@@ -51,15 +57,21 @@ class HomePageFragment : Fragment(),
 
         databaseReference = FirebaseDatabase.getInstance().reference.child("homelist")
         databaseReference.keepSynced(true)
+        var count = 0
         val childEventListener = object : ChildEventListener {
             override fun onChildAdded(dataSnapshot: DataSnapshot, previousChildName: String?) {
                 Log.d(">>>", "onChildAdded:" + dataSnapshot.key!!)
+                count++
 
                 val model = dataSnapshot.getValue(HomeList::class.java)
                 model?.let {
                     if (!homeList.contains(model)) {
                         homeList.add(it)
                     }
+                }
+
+                if(count >= dataSnapshot.childrenCount){
+                    hideShimmer()
                 }
                 setAdapter()
             }
@@ -96,5 +108,15 @@ class HomePageFragment : Fragment(),
     override fun onDestroy() {
         super.onDestroy()
         EventBus.getDefault().unregister(this)
+    }
+
+    private fun hideShimmer() {
+        shimmer_container.stopShimmer()
+        viewModel.bIsLoading.set(false)
+    }
+
+    private fun showShimmer() {
+        shimmer_container.startShimmer()
+        viewModel.bIsLoading.set(true)
     }
 }

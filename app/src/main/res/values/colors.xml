@@ -11,5 +11,6 @@
     <color name="textSecondaryGrey">#6D6D6D</color>
 
     <color name="colorPrimary">#3570D2</color>
+    <color name="colorGrey">#DEDEDE</color>
 
 </resources>
