@@ -18,6 +18,7 @@ import com.homework.mhafidhaziz.aloapp.R
 import com.homework.mhafidhaziz.aloapp.databinding.ActivityDetailBinding
 import com.homework.mhafidhaziz.aloapp.databinding.ItemImageBinding
 import com.homework.mhafidhaziz.aloapp.entity.ImageItem
+import org.greenrobot.eventbus.EventBus
 
 
 /**
@@ -29,19 +30,22 @@ import com.homework.mhafidhaziz.aloapp.entity.ImageItem
 class DetailActivity : AppCompatActivity(),
     DetailView {
 
-    companion object {
-
-        fun startThisActivity(context: Context) {
-            val intent = Intent(context, DetailActivity::class.java)
-            context.startActivity(intent)
-        }
-    }
-
     lateinit var binding: ActivityDetailBinding
     private lateinit var databaseReference: DatabaseReference
 
     var inflater: LayoutInflater? = null
     private var imageList: ArrayList<ImageItem> = ArrayList()
+
+    companion object {
+
+        private const val EXTRA_SELECTED_POSITION = "EXTRA_SELECTED_POSITION"
+
+        fun startThisActivity(context: Context, selectedPos: String?) {
+            val intent = Intent(context, DetailActivity::class.java)
+            intent.putExtra(EXTRA_SELECTED_POSITION, selectedPos)
+            context.startActivity(intent)
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,7 +58,7 @@ class DetailActivity : AppCompatActivity(),
             supportActionBar?.setDisplayShowTitleEnabled(false)
         }
 
-        databaseReference = FirebaseDatabase.getInstance().reference.child("homelist").child("0").child("images")
+        databaseReference = FirebaseDatabase.getInstance().reference.child("homelist").child(intent.getStringExtra(EXTRA_SELECTED_POSITION)).child("images")
         databaseReference.keepSynced(true)
         val childEventListener = object : ChildEventListener {
             override fun onChildAdded(dataSnapshot: DataSnapshot, previousChildName: String?) {

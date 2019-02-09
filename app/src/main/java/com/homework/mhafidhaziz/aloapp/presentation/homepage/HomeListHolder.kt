@@ -7,6 +7,8 @@ import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.homework.mhafidhaziz.aloapp.R
 import com.homework.mhafidhaziz.aloapp.entity.HomeList
+import com.homework.mhafidhaziz.aloapp.event.HomeEvent
+import org.greenrobot.eventbus.EventBus
 
 
 /**
@@ -23,6 +25,10 @@ class HomeListHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         setTitle(homeList.title)
         setImage(homeList.imgUrl)
+
+        itemView.setOnClickListener {
+            EventBus.getDefault().post(HomeEvent(adapterPosition.toString()))
+        }
     }
 
     private fun setTitle(title: String?) {

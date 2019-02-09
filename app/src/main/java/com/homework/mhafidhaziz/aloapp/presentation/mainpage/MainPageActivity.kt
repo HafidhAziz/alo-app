@@ -72,7 +72,7 @@ class MainPageActivity : AppCompatActivity(),
             R.id.action_profile -> {
                 if (R.id.action_profile != getSelectedItem(binding.bottomTab)) {
                     resetBottomMenuIcon()
-                    menuItem.setIcon(R.drawable.ic_home_active)
+                    menuItem.setIcon(R.drawable.ic_profile_active)
                     changeMainFragmentContent(ProfileFragment())
                 }
             }
@@ -83,7 +83,7 @@ class MainPageActivity : AppCompatActivity(),
     private fun resetBottomMenuIcon() {
         val menu = binding.bottomTab.menu
         menu.findItem(R.id.action_home).setIcon(R.drawable.ic_home)
-        menu.findItem(R.id.action_profile).setIcon(R.drawable.ic_home)
+        menu.findItem(R.id.action_profile).setIcon(R.drawable.ic_profile)
     }
 
     fun setActionBarTitle(title: String) {

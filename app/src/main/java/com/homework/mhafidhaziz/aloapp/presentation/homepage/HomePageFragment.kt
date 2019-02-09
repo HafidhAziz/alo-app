@@ -18,8 +18,10 @@ import com.homework.mhafidhaziz.aloapp.databinding.FragmentHomePageBinding
 import com.homework.mhafidhaziz.aloapp.entity.HomeList
 import com.homework.mhafidhaziz.aloapp.presentation.mainpage.MainPageActivity
 import com.google.firebase.database.DatabaseError
-
-
+import com.homework.mhafidhaziz.aloapp.event.HomeEvent
+import com.homework.mhafidhaziz.aloapp.presentation.detail.DetailActivity
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
 
 
 /**
@@ -48,6 +50,7 @@ class HomePageFragment : Fragment() {
 
         binding.recyclerView.setHasFixedSize(true)
         binding.recyclerView.layoutManager = LinearLayoutManager(context)
+        EventBus.getDefault().register(this)
 
         attachRecyclerViewAdapter()
     }
@@ -83,5 +86,26 @@ class HomePageFragment : Fragment() {
                 Snackbar.make(view!!, "Terjadi Kesalahan", Snackbar.LENGTH_LONG).show()
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        databaseReference = FirebaseDatabase.getInstance().reference.child("homelist")
+        databaseReference.keepSynced(true)
+
+        binding.recyclerView.setHasFixedSize(true)
+        binding.recyclerView.layoutManager = LinearLayoutManager(context)
+
+        attachRecyclerViewAdapter()
+    }
+
+    @Subscribe
+    fun onClickFeature(event: HomeEvent) {
+        DetailActivity.startThisActivity(context!!, event.selectedPosition)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        EventBus.getDefault().unregister(this)
     }
 }
