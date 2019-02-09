@@ -14,7 +14,8 @@
         android:layout_height="wrap_content"
         android:background="@color/pageBackground"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        android:paddingTop="@dimen/dp12">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerView"
