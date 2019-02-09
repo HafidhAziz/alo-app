@@ -91,7 +91,7 @@ class DetailActivity : AppCompatActivity(),
     private fun setPagerContent() {
         inflater = this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         binding.pagerImages.adapter = OnboardingAdapter()
-        binding.indicator.setViewPager(binding.pagerImages)
+        binding.indicator.setupWithViewPager(binding.pagerImages, true)
     }
 
     internal inner class OnboardingAdapter : PagerAdapter() {
