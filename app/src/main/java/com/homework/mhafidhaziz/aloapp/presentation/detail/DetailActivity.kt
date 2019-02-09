@@ -29,6 +29,7 @@ import com.homework.mhafidhaziz.aloapp.entity.ImageItem
 class DetailActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityDetailBinding
+    private lateinit var viewModel: DetailViewModel
     private lateinit var databaseReference: DatabaseReference
 
     var inflater: LayoutInflater? = null
@@ -49,6 +50,9 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_detail)
+        binding.vm = DetailViewModel()
+        viewModel = binding.vm
+
         binding.toolbar.let {
             binding.titleName.text = getString(R.string.title_detail)
             setSupportActionBar(binding.toolbar)
@@ -59,15 +63,21 @@ class DetailActivity : AppCompatActivity() {
         databaseReference = FirebaseDatabase.getInstance().reference.child("homelist")
             .child(intent.getStringExtra(EXTRA_SELECTED_POSITION)).child("images")
         databaseReference.keepSynced(true)
+        var count = 0
         val childEventListener = object : ChildEventListener {
             override fun onChildAdded(dataSnapshot: DataSnapshot, previousChildName: String?) {
                 Log.d(">>>", "onChildAdded:" + dataSnapshot.key!!)
+                count++
 
                 val model = dataSnapshot.getValue(ImageItem::class.java)
                 model?.let {
                     if (!imageList.contains(model)) {
                         imageList.add(it)
                     }
+                }
+
+                if (count >= dataSnapshot.childrenCount) {
+                    viewModel.bIsLoading.set(false)
                 }
                 setPagerContent()
             }

@@ -70,7 +70,7 @@ class HomePageFragment : Fragment(),
                     }
                 }
 
-                if(count >= dataSnapshot.childrenCount){
+                if (count >= dataSnapshot.childrenCount) {
                     hideShimmer()
                 }
                 setAdapter()
@@ -113,10 +113,5 @@ class HomePageFragment : Fragment(),
     private fun hideShimmer() {
         shimmer_container.stopShimmer()
         viewModel.bIsLoading.set(false)
-    }
-
-    private fun showShimmer() {
-        shimmer_container.startShimmer()
-        viewModel.bIsLoading.set(true)
     }
 }

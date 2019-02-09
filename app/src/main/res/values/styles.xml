@@ -60,11 +60,11 @@
     </style>
 
     <style name="CustomInputLayout.Dark">
-        <item name="colorAccent">@color/colorPrimary</item>
+        <item name="colorAccent">@color/textPrimary</item>
     </style>
 
     <style name="TextFloatLabelAppearance" parent="TextAppearance.Design.Hint">
-        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textColor">@color/textPrimary</item>
     </style>
 
 </resources>
