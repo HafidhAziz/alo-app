@@ -45,12 +45,13 @@ class HomePageFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         (activity as MainPageActivity).setActionBarTitle(getString(R.string.app_name))
 
+        EventBus.getDefault().register(this)
+
         databaseReference = FirebaseDatabase.getInstance().reference.child("homelist")
         databaseReference.keepSynced(true)
 
         binding.recyclerView.setHasFixedSize(true)
         binding.recyclerView.layoutManager = LinearLayoutManager(context)
-        EventBus.getDefault().register(this)
 
         attachRecyclerViewAdapter()
     }
@@ -86,17 +87,6 @@ class HomePageFragment : Fragment() {
                 Snackbar.make(view!!, "Terjadi Kesalahan", Snackbar.LENGTH_LONG).show()
             }
         }
-    }
-
-    override fun onResume() {
-        super.onResume()
-        databaseReference = FirebaseDatabase.getInstance().reference.child("homelist")
-        databaseReference.keepSynced(true)
-
-        binding.recyclerView.setHasFixedSize(true)
-        binding.recyclerView.layoutManager = LinearLayoutManager(context)
-
-        attachRecyclerViewAdapter()
     }
 
     @Subscribe
