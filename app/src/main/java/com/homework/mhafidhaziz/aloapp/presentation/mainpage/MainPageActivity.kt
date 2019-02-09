@@ -3,10 +3,10 @@ package com.homework.mhafidhaziz.aloapp.presentation.mainpage
 import android.content.Context
 import android.content.Intent
 import android.databinding.DataBindingUtil
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
+import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
 import com.homework.mhafidhaziz.aloapp.R
 import com.homework.mhafidhaziz.aloapp.databinding.ActivityMainPageBinding

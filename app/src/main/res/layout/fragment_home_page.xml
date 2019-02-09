@@ -6,6 +6,10 @@
 
         <import type="android.view.View"/>
 
+        <variable
+            name="view"
+            type="com.homework.mhafidhaziz.aloapp.presentation.homepage.HomePageView"/>
+
     </data>
 
     <android.support.constraint.ConstraintLayout

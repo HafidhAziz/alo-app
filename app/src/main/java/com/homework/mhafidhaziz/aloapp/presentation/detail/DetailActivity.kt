@@ -18,7 +18,6 @@ import com.homework.mhafidhaziz.aloapp.R
 import com.homework.mhafidhaziz.aloapp.databinding.ActivityDetailBinding
 import com.homework.mhafidhaziz.aloapp.databinding.ItemImageBinding
 import com.homework.mhafidhaziz.aloapp.entity.ImageItem
-import org.greenrobot.eventbus.EventBus
 
 
 /**
@@ -27,8 +26,7 @@ import org.greenrobot.eventbus.EventBus
  * help.aziz@gmail.com
  * Copyright 2019
  */
-class DetailActivity : AppCompatActivity(),
-    DetailView {
+class DetailActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityDetailBinding
     private lateinit var databaseReference: DatabaseReference
@@ -58,7 +56,8 @@ class DetailActivity : AppCompatActivity(),
             supportActionBar?.setDisplayShowTitleEnabled(false)
         }
 
-        databaseReference = FirebaseDatabase.getInstance().reference.child("homelist").child(intent.getStringExtra(EXTRA_SELECTED_POSITION)).child("images")
+        databaseReference = FirebaseDatabase.getInstance().reference.child("homelist")
+            .child(intent.getStringExtra(EXTRA_SELECTED_POSITION)).child("images")
         databaseReference.keepSynced(true)
         val childEventListener = object : ChildEventListener {
             override fun onChildAdded(dataSnapshot: DataSnapshot, previousChildName: String?) {
